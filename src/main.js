@@ -1,10 +1,22 @@
-import App from './App.svelte'
+import Counter from './Counter.svelte';
+import Quote from './Quote.svelte';
 
-const app = new App({
-  target: document.body,
-  props: {
-    name: 'whirled',
-  },
-})
+const path = window.location.search;
+let app;
 
-export default app
+if (!path) {
+  app = new Counter({
+    target: document.body,
+    props: {
+      name: 'whirled',
+    },
+  });
+}
+
+if (path === '?Quote') {
+  app = new Quote({
+    target: document.body,
+  });
+}
+
+export default app;
